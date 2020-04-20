@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#d30425</color>-->
+    <color name="colorPrimary">#535bfe</color>
+    <!--<color name="colorPrimaryDark">#990000</color>-->
+    <color name="colorPrimaryDark">#535bfe</color>
+    <!--<color name="primaryLightColor">#ff534e</color>-->
+    <color name="primaryLightColor">#D8122D</color>
+    <color name="colorAccent">#535bfe</color>
+    <color name="colorPrimaryLight">#eaeaea</color>
+    <color name="colorTransparent">#00000000</color>
+
+    <color name="colorPrimaryText">#333b46</color>
+    <color name="colorSecondaryText">#757575</color>
+    <color name="colorIcons">#d30425</color>
+    <color name="colorDivider">#d30425</color>
+
+    <color name="colorBoldTextDefault">#505050</color>
+    <color name="colorTextDefault">#727272</color>
+    <color name="colorTextLight">#999999</color>
+
+    <color name="colorTabOutline">#f78b80</color>
+    <color name="colorLoginPurple">#f41642</color>
+    <color name="colorLoginPurpleDark">#e41642</color>
+    <color name="colorLogoGray">#a8a8a8</color>
+    <color name="colorWhite">#fff</color>
+    <color name="colorLightGray">#dfdfdf</color>
+
+    <color name="colorWhiteRed">#f78fa7</color>
+
+    <color name="colorBlue">#ec9500</color>
+    <color name="colorType">#efefef</color>
+    <color name="bg_color">#f9f9fb</color>
+</resources>

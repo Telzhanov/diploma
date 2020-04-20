@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "967007847647",
+    "firebase_url": "https://hacknu-1552376504458.firebaseio.com",
+    "project_id": "hacknu-1552376504458",
+    "storage_bucket": "hacknu-1552376504458.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:967007847647:android:78d98b54e353acfc",
+        "android_client_info": {
+          "package_name": "kz.validol.hacknu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "967007847647-7281ejj082sn76eb3glkm3r0bncfkmp6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kz.validol.hacknu",
+            "certificate_hash": "e9b8e22c520aac08319317189c590400399d8f4f"
+          }
+        },
+        {
+          "client_id": "967007847647-up587se0s90gcuna2ss92fqufk0e9101.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxJ_1AVCrH_GhPbe6ojTFsFjY6HS_q0CA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "967007847647-up587se0s90gcuna2ss92fqufk0e9101.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
