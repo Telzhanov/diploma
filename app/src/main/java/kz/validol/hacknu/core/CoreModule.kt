@@ -1,9 +1,14 @@
 package kz.validol.hacknu.core
 
 import kz.validol.hacknu.Constants
+import kz.validol.hacknu.auth.data.AuthRepository
+import kz.validol.hacknu.auth.domain.LoginInteractor
+import kz.validol.hacknu.auth.domain.LoginUseCase
+import kz.validol.hacknu.auth.presentation.LoginViewModel
 import kz.validol.hacknu.core.util.Logger
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -11,6 +16,15 @@ import java.util.concurrent.TimeUnit
 
 val coreModule = module {
     single { createOkHttpClient() }
+    viewModel {
+        LoginViewModel(get())
+    }
+    factory {
+        LoginInteractor(get()) as LoginUseCase
+    }
+    factory {
+        AuthRepository(get())
+    }
 }
 
 /**

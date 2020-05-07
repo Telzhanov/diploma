@@ -42,6 +42,7 @@ dependencies {
     }
 
     implementation "org.koin:koin-android:${koin_version}"
+    implementation "org.koin:koin-android-viewmodel:$koin_version"
     implementation "io.reactivex.rxjava2:rxjava:${rxJava_version}"
     implementation "io.reactivex.rxjava2:rxandroid:${rxAndroid_version}"
     implementation "com.squareup.okhttp3:okhttp:${okhttp_version}"
@@ -75,6 +76,9 @@ dependencies {
     implementation 'jp.wasabeef:blurry:3.0.0'
     implementation 'at.blogc:expandabletextview:1.0.5'
     implementation 'pl.pawelkleczkowski.customgauge:CustomGauge:1.0.3'
+    def lifecycle_version = "2.2.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
 
 }

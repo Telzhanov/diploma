@@ -12,7 +12,7 @@ import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.messaging.FirebaseMessaging
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kz.validol.hacknu.auth.LoginActivity
+import kz.validol.hacknu.auth.presentation.LoginActivity
 import kz.validol.hacknu.onboarding.OnboardingActivity
 import org.koin.android.ext.android.inject
 

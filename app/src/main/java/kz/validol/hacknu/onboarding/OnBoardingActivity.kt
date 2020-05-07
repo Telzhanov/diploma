@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_onboarding.*
 import kz.validol.hacknu.R
-import kz.validol.hacknu.auth.LoginActivity
+import kz.validol.hacknu.auth.presentation.LoginActivity
 
 class OnboardingActivity : AppCompatActivity() {
 

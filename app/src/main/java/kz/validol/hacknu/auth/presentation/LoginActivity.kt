@@ -1,7 +1,9 @@
-package kz.validol.hacknu.auth
+package kz.validol.hacknu.auth.presentation
 
 //import android.support.test.orchestrator.junit.BundleJUnitUtils.getResult
 import android.annotation.SuppressLint
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelStore
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
@@ -36,12 +38,14 @@ import kotlinx.android.synthetic.main.activity_login.*
 import kz.validol.hacknu.Api
 import kz.validol.hacknu.App
 import kz.validol.hacknu.MenuActivity
-import kz.validol.hacknu.auth.RegisterActivity.Companion.FACEBOOK
-import kz.validol.hacknu.auth.RegisterActivity.Companion.GIT
-import kz.validol.hacknu.auth.RegisterActivity.Companion.GOOGLE
-import kz.validol.hacknu.auth.RegisterActivity.Companion.VK
+import kz.validol.hacknu.auth.presentation.RegisterActivity.Companion.FACEBOOK
+import kz.validol.hacknu.auth.presentation.RegisterActivity.Companion.GIT
+import kz.validol.hacknu.auth.presentation.RegisterActivity.Companion.GOOGLE
+import kz.validol.hacknu.auth.presentation.RegisterActivity.Companion.VK
+import kz.validol.hacknu.auth.data.VKObject
 import okhttp3.*
 import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.IOException
 import java.math.BigInteger
 import java.security.SecureRandom
@@ -62,6 +66,7 @@ class LoginActivity : AppCompatActivity() {
     private var mAuth: FirebaseAuth? = null
     private var mAuthListener: FirebaseAuth.AuthStateListener? = null
     private val sharedPref: SharedPreferences by inject()
+    private val loginViewModel: LoginViewModel by viewModel()
     private val faceBookCallbackManager = CallbackManager.Factory.create()
     private var mGoogleSignInClient:GoogleSignInClient? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -87,7 +92,7 @@ class LoginActivity : AppCompatActivity() {
         btnSignUp.setOnClickListener {
             login(mPhone.unmaskedText, edit_text_sign_in_password.text.toString())
         }
-
+        setObservers()
         signInTextRight.setOnClickListener{
             val loginIntent = Intent(this, RegisterActivity::class.java)
             startActivity(loginIntent)
@@ -106,8 +111,6 @@ class LoginActivity : AppCompatActivity() {
 
     @SuppressLint("CheckResult")
     private fun login(username: String, password: String){
-//        startActivity(Intent(this, MenuActivity::class.java))
-//        finish()
         api.login(username, password, App.fcmDeviceId, username)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -125,7 +128,9 @@ class LoginActivity : AppCompatActivity() {
 
     private fun signInGoogle() {
         val signInIntent = mGoogleSignInClient?.getSignInIntent()
-        startActivityForResult(signInIntent, RC_SIGN_IN)
+        startActivityForResult(signInIntent,
+            RC_SIGN_IN
+        )
     }
 
     override fun onStart() {
@@ -167,6 +172,17 @@ class LoginActivity : AppCompatActivity() {
             }
         })
 
+    }
+
+    private fun setObservers() {
+        loginViewModel.getLoginResponseLiveData().observe(this, android.arch.lifecycle.Observer {
+            putLogined()
+            startActivity(Intent(this, MenuActivity::class.java))
+            finish()
+        })
+        loginViewModel.getLoginErrorLiveData().observe(this, android.arch.lifecycle.Observer {
+            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+        })
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -265,7 +281,9 @@ class LoginActivity : AppCompatActivity() {
                 .addPathSegment("oauth")
                 .addPathSegment("authorize")
                 .addQueryParameter("client_id", "2d22cb3f15cda9027eb1")
-                .addQueryParameter("redirect_uri", RegisterActivity.REDIRECT_URL_CALLBACK)
+                .addQueryParameter("redirect_uri",
+                    RegisterActivity.REDIRECT_URL_CALLBACK
+                )
                 .addQueryParameter("state", getRandomString())
                 .addQueryParameter("scope", "user:email")
                 .build()
@@ -292,7 +310,9 @@ class LoginActivity : AppCompatActivity() {
             .add("client_id", "2d22cb3f15cda9027eb1")
             .add("client_secret", "aca85697d9f0d5b1b1342e349f8786548df5689c")
             .add("code", code)
-            .add("redirect_uri", RegisterActivity.REDIRECT_URL_CALLBACK)
+            .add("redirect_uri",
+                RegisterActivity.REDIRECT_URL_CALLBACK
+            )
             .add("state", state)
             .build()
 

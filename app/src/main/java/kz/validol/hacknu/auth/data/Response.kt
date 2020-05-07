@@ -1,4 +1,4 @@
-package kz.validol.hacknu.auth
+package kz.validol.hacknu.auth.data
 
 data class Response(
     val first_name: String?,

@@ -1,4 +1,4 @@
-package kz.validol.hacknu.auth
+package kz.validol.hacknu.auth.presentation
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -32,6 +32,7 @@ import kotlinx.android.synthetic.main.activity_register.*
 import kz.validol.hacknu.Api
 import kz.validol.hacknu.App
 import kz.validol.hacknu.MenuActivity
+import kz.validol.hacknu.auth.data.VKObject
 import kz.validol.hacknu.entities.User
 import okhttp3.*
 import org.koin.android.ext.android.inject
@@ -207,7 +208,8 @@ class RegisterActivity : AppCompatActivity() {
                             Log.v("accepted", it)
                         }
                     }
-                    facebookUser.password = FACEBOOK
+                    facebookUser.password =
+                        FACEBOOK
                     signUp(facebookUser)
                     LoginManager.getInstance().logOut()
                 }
@@ -233,7 +235,9 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun signInGoogle() {
         val signInIntent = mGoogleSignInClient?.getSignInIntent()
-        startActivityForResult(signInIntent, RC_SIGN_IN)
+        startActivityForResult(signInIntent,
+            RC_SIGN_IN
+        )
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -299,7 +303,9 @@ class RegisterActivity : AppCompatActivity() {
                 .addPathSegment("oauth")
                 .addPathSegment("authorize")
                 .addQueryParameter("client_id", "2d22cb3f15cda9027eb1")
-                .addQueryParameter("redirect_uri", REDIRECT_URL_CALLBACK)
+                .addQueryParameter("redirect_uri",
+                    REDIRECT_URL_CALLBACK
+                )
                 .addQueryParameter("state", getRandomString())
                 .addQueryParameter("scope", "user:email")
                 .build()
@@ -326,7 +332,9 @@ class RegisterActivity : AppCompatActivity() {
             .add("client_id", "2d22cb3f15cda9027eb1")
             .add("client_secret", "aca85697d9f0d5b1b1342e349f8786548df5689c")
             .add("code", code)
-            .add("redirect_uri", REDIRECT_URL_CALLBACK)
+            .add("redirect_uri",
+                REDIRECT_URL_CALLBACK
+            )
             .add("state", state)
             .build()
 

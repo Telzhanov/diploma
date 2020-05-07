@@ -11,7 +11,7 @@ import android.support.v4.app.NotificationCompat
 import android.util.Log
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import kz.validol.hacknu.auth.LoginActivity
+import kz.validol.hacknu.auth.presentation.LoginActivity
 
 
 class MyFirebaseMessagingService: FirebaseMessagingService() {

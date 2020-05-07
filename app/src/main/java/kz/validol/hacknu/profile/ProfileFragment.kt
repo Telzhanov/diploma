@@ -12,11 +12,9 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlinx.android.synthetic.main.item_book.view.*
-import kz.validol.hacknu.Api
 import kz.validol.hacknu.App
 import kz.validol.hacknu.R
-import kz.validol.hacknu.auth.LoginActivity
+import kz.validol.hacknu.auth.presentation.LoginActivity
 import org.koin.android.ext.android.inject
 import org.koin.standalone.KoinComponent
 
